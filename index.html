@@ -6,327 +6,256 @@
 <title>For You 💗</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-    margin:0;
-    height:100vh;
-    overflow:hidden;
-    font-family:Georgia,serif;
-    background:linear-gradient(135deg,#ffd1e3,#f8a8c6,#ffd9e8);
-    color:#79334f;
+margin:0;
+height:100vh;
+overflow:hidden;
+font-family:Georgia,serif;
+background:linear-gradient(135deg,#ffd1e3,#f8a8c6,#ffd9e8);
+color:#79334f;
 }
 
-/* SCREENS */
 .screen{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:2;
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:2;
 }
 
-.hidden{
-    display:none;
-}
+.hidden{display:none}
 
-/* HEADINGS */
 .title{
-    font-size:30px;
-    color:#a93262;
-    text-align:center;
-    margin-bottom:25px;
+font-size:28px;
+color:#a93262;
+text-align:center;
+margin-bottom:25px;
 }
 
-/* BUTTON */
 button{
-    border:0;
-    padding:14px 34px;
-    border-radius:30px;
-    background:#e6538b;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
-    box-shadow:0 7px 20px rgba(150,40,80,.25);
-    transition:.3s;
+border:0;
+padding:14px 34px;
+border-radius:30px;
+background:#e6538b;
+color:white;
+font-size:17px;
+cursor:pointer;
+box-shadow:0 7px 20px rgba(150,40,80,.25);
 }
 
-button:hover{
-    transform:scale(1.07);
+input{
+padding:14px;
+width:230px;
+border:2px solid #ee8eb1;
+border-radius:25px;
+outline:none;
+text-align:center;
+font-size:16px;
+margin-bottom:12px;
+background:#fff5fa;
 }
 
-/* ---------------- ENVELOPE ---------------- */
+.error{
+color:#b73568;
+margin-top:12px;
+display:none;
+}
 
+/* Envelope */
 .envelope{
-    width:300px;
-    height:205px;
-    position:relative;
-    cursor:pointer;
-    filter:drop-shadow(0 12px 18px rgba(130,35,75,.25));
+width:280px;
+height:190px;
+position:relative;
+cursor:pointer;
+filter:drop-shadow(0 12px 18px rgba(130,35,75,.25));
 }
 
-/* envelope body */
 .env-body{
-    position:absolute;
-    inset:0;
-    background:#f9a9c6;
-    border-radius:8px;
-    overflow:hidden;
+position:absolute;
+inset:0;
+background:#f9a9c6;
+border-radius:8px;
+overflow:hidden;
 }
 
-/* letter inside */
 .env-paper{
-    position:absolute;
-    width:250px;
-    height:165px;
-    left:25px;
-    top:15px;
-    background:#ffe8f1;
-    border-radius:5px;
+position:absolute;
+width:235px;
+height:150px;
+left:22px;
+top:15px;
+background:#ffe8f1;
+border-radius:5px;
 }
 
-/* bottom folds */
 .env-left{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0;
-    height:0;
-    border-left:150px solid #f58caf;
-    border-top:105px solid transparent;
-    z-index:3;
+position:absolute;
+bottom:0;
+left:0;
+border-left:140px solid #f58caf;
+border-top:100px solid transparent;
+z-index:3;
 }
 
 .env-right{
-    position:absolute;
-    bottom:0;
-    right:0;
-    width:0;
-    height:0;
-    border-right:150px solid #f58caf;
-    border-top:105px solid transparent;
-    z-index:3;
+position:absolute;
+bottom:0;
+right:0;
+border-right:140px solid #f58caf;
+border-top:100px solid transparent;
+z-index:3;
 }
 
-/* top flap */
 .env-flap{
-    position:absolute;
-    top:0;
-    left:0;
-    width:0;
-    height:0;
-    border-left:150px solid transparent;
-    border-right:150px solid transparent;
-    border-top:112px solid #ec78a7;
-    z-index:5;
+position:absolute;
+top:0;
+left:0;
+border-left:140px solid transparent;
+border-right:140px solid transparent;
+border-top:110px solid #ec78a7;
+z-index:5;
 }
 
-/* cute seal */
 .seal{
-    position:absolute;
-    left:50%;
-    top:96px;
-    transform:translate(-50%,-50%);
-    width:45px;
-    height:45px;
-    background:#df477d;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:23px;
-    z-index:6;
-    box-shadow:0 3px 8px rgba(130,35,75,.25);
+position:absolute;
+left:50%;
+top:95px;
+transform:translate(-50%,-50%);
+width:45px;
+height:45px;
+background:#df477d;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:23px;
+z-index:6;
 }
 
-/* ---------------- LETTER ---------------- */
-
+/* Letter */
 .letter-wrap{
-    position:relative;
-    width:94%;
-    max-width:720px;
-    height:94vh;
+position:relative;
+width:94%;
+max-width:720px;
+height:94vh;
 }
 
 .letter{
-    width:100%;
-    height:100%;
-    background:linear-gradient(145deg,#ffddea,#ffc7dc);
-    border:3px solid #ee8eb1;
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 15px 45px rgba(120,35,70,.3);
-    overflow-y:auto;
-    animation:openLetter .7s ease;
-    position:relative;
-    z-index:2;
+width:100%;
+height:100%;
+background:linear-gradient(145deg,#ffddea,#ffc7dc);
+border:3px solid #ee8eb1;
+border-radius:20px;
+padding:30px;
+box-shadow:0 15px 45px rgba(120,35,70,.3);
+overflow-y:auto;
+position:relative;
+z-index:2;
+animation:openLetter .7s ease;
 }
 
 @keyframes openLetter{
-    from{
-        transform:scale(.7) rotate(-2deg);
-        opacity:0;
-    }
-    to{
-        transform:scale(1) rotate(0);
-        opacity:1;
-    }
+from{transform:scale(.7);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 
 .letter h2{
-    text-align:center;
-    color:#b73568;
-    margin-top:0;
-    margin-bottom:22px;
-    font-size:25px;
+text-align:center;
+color:#b73568;
+margin-top:0;
 }
 
 .text{
-    font-size:16px;
-    line-height:1.85;
-    color:#73334f;
-    white-space:pre-line;
+font-size:16px;
+line-height:1.85;
+color:#73334f;
+white-space:pre-line;
 }
 
-/* HEARTS ONLY OVER LETTER */
 .letter-heart{
-    position:absolute;
-    z-index:5;
-    bottom:-25px;
-    font-size:20px;
-    pointer-events:none;
-    animation:letterFloat 6s linear infinite;
+position:absolute;
+z-index:5;
+bottom:-25px;
+font-size:20px;
+pointer-events:none;
+animation:float 6s linear infinite;
 }
 
-@keyframes letterFloat{
-    0%{
-        transform:translateY(0) rotate(0deg);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.85;
-    }
-
-    100%{
-        transform:translateY(-105vh) rotate(360deg);
-        opacity:0;
-    }
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+15%{opacity:.85}
+100%{transform:translateY(-105vh) rotate(360deg);opacity:0}
 }
 
-/* MOBILE */
 @media(max-width:600px){
-
-    .title{
-        font-size:25px;
-    }
-
-    .envelope{
-        width:260px;
-        height:178px;
-    }
-
-    .env-left{
-        border-left-width:130px;
-        border-top-width:92px;
-    }
-
-    .env-right{
-        border-right-width:130px;
-        border-top-width:92px;
-    }
-
-    .env-flap{
-        border-left-width:130px;
-        border-right-width:130px;
-        border-top-width:100px;
-    }
-
-    .seal{
-        top:85px;
-    }
-
-    .letter{
-        padding:22px;
-    }
-
-    .text{
-        font-size:15px;
-        line-height:1.75;
-    }
+.title{font-size:25px}
+.letter{padding:22px}
+.text{font-size:15px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- START -->
-<div class="screen" id="start">
-    <div class="title">Something special for you 💗</div>
-    <button onclick="showScreen('forYou')">
-        Start 💕
-    </button>
+<!-- PASSWORD -->
+<div class="screen" id="password">
+<h1 class="title">This is only for you 💗</h1>
+<input type="password" id="pass" placeholder="Enter password 🔐">
+<button onclick="checkPassword()">Open 💌</button>
+<div class="error" id="error">Wrong password 🥺</div>
 </div>
 
+<!-- START -->
+<div class="screen hidden" id="start">
+<div class="title">Something special for you 💗</div>
+<button onclick="show('forYou')">Start 💕</button>
+</div>
 
 <!-- THIS IS FOR YOU -->
 <div class="screen hidden" id="forYou">
-    <div class="title">This is for you 💗</div>
-    <button onclick="showScreen('envelope')">
-        Open it 💌
-    </button>
+<div class="title">This is for you 💗</div>
+<button onclick="show('envelope')">Open it 💌</button>
 </div>
-
 
 <!-- ENVELOPE -->
 <div class="screen hidden" id="envelope">
+<div class="title">A little letter for you 💕</div>
 
-    <div class="title">A little letter for you 💕</div>
-
-    <div class="envelope" onclick="showScreen('letter')">
-
-        <div class="env-body"></div>
-        <div class="env-paper"></div>
-
-        <div class="env-left"></div>
-        <div class="env-right"></div>
-
-        <div class="env-flap"></div>
-
-        <div class="seal">💗</div>
-
-    </div>
-
-    <p>Tap the envelope 💌</p>
-
+<div class="envelope" onclick="show('letter')">
+<div class="env-body"></div>
+<div class="env-paper"></div>
+<div class="env-left"></div>
+<div class="env-right"></div>
+<div class="env-flap"></div>
+<div class="seal">💗</div>
 </div>
 
+<p>Tap the envelope 💌</p>
+</div>
 
 <!-- LETTER -->
 <div class="screen hidden" id="letter">
 
-    <div class="letter-wrap">
+<div class="letter-wrap">
 
-        <!-- Floating hearts over letter -->
-        <span class="letter-heart" style="left:5%;animation-delay:0s;">💗</span>
-        <span class="letter-heart" style="left:15%;animation-delay:2s;">💕</span>
-        <span class="letter-heart" style="left:28%;animation-delay:4s;">💖</span>
-        <span class="letter-heart" style="left:42%;animation-delay:1s;">💗</span>
-        <span class="letter-heart" style="left:55%;animation-delay:3s;">💕</span>
-        <span class="letter-heart" style="left:68%;animation-delay:5s;">💖</span>
-        <span class="letter-heart" style="left:80%;animation-delay:2s;">💗</span>
-        <span class="letter-heart" style="left:92%;animation-delay:4s;">💕</span>
+<span class="letter-heart" style="left:5%">💗</span>
+<span class="letter-heart" style="left:18%;animation-delay:2s">💕</span>
+<span class="letter-heart" style="left:32%;animation-delay:4s">💖</span>
+<span class="letter-heart" style="left:47%;animation-delay:1s">💗</span>
+<span class="letter-heart" style="left:62%;animation-delay:3s">💕</span>
+<span class="letter-heart" style="left:77%;animation-delay:5s">💖</span>
+<span class="letter-heart" style="left:91%;animation-delay:2s">💗</span>
 
-        <div class="letter">
+<div class="letter">
 
-            <h2>💗 Ye Letter Tmhre Nam 💗</h2>
+<h2>💗 Ye Letter Tmhre Nam 💗</h2>
 
-            <div class="text">
+<div class="text">
 
 Ye letter tmhre nam 💌
 
@@ -374,24 +303,28 @@ Or agr waqai ma 7 janm hote to har janam ma ma tmhri hoti or tm mere...
 
 Or tm jannat ma b mere sth hi hogey kbhrdar hooro k peche gye biwi ma hn tmhri eslie tm mere sth hoge bss or I love you.. I love you so much.. I love dher sara.. Infinity.. Or bs tm mere ho.. Hafsa k👉🏻👈🏻💗
 
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
-
+</div>
+</div>
+</div>
 
 <script>
 
-function showScreen(id){
+function show(id){
+document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+}
 
-    document.querySelectorAll(".screen").forEach(function(screen){
-        screen.classList.add("hidden");
-    });
+function checkPassword(){
 
-    document.getElementById(id).classList.remove("hidden");
+let password=document.getElementById('pass').value;
+
+if(password==='10january'){
+show('start');
+}else{
+document.getElementById('error').style.display='block';
+}
+
 }
 
 </script>
